@@ -1,0 +1,26 @@
+services:
+  recipe_frontend:
+    container_name: recipe_frontend
+    build: 
+      context: ./Recipe-Frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - recipe_backend
+    networks:
+      - twoone14
+    
+  recipe_backend:
+    container_name: recipe_backend
+    build: 
+      context: ./Recipe-Backend
+    ports:
+      - 4001:4000
+
+    networks:
+      - twoone14
+
+networks:
+  twoone14:
+    external: true
+    name: twoone14
